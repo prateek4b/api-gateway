@@ -7,14 +7,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 
-@Configuration
+//@Configuration
 public class RouteConfiguration {
 
-    @Bean
+    //@Bean
     public RouteLocator gatewayRouter(RouteLocatorBuilder routeLocatorBuilder) {
         return routeLocatorBuilder.routes()
                 .route("first_route",
-                        r -> r.path("/sayHello").uri("http://localhost:8100/"))
+                        r -> r.path("/sayHello").
+                               /* filters(gatewayFilterSpec -> gatewayFilterSpec.circuitBreaker(config->config.setFallbackUri("forward:/fallback"))).
+                               */ uri("lb://USER-PROFILE-SERVICE"))
                 .build();
     }
 }
