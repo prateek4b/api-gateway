@@ -1,3 +1,4 @@
-C:\code\api-gateway\src\main\java\com\guide\cm\apigatway\route\RouteConfiguration.java
-C:\code\api-gateway\src\main\java\com\guide\cm\apigatway\controller\FallBackController.java
-C:\code\api-gateway\src\main\java\com\guide\cm\apigatway\ApiGatwayApplication.java
+E:\work\codeb\api-gateway\src\main\java\com\guide\cm\apigatway\route\RouteConfiguration.java
+E:\work\codeb\api-gateway\src\main\java\com\guide\cm\apigatway\ApiGatwayApplication.java
+E:\work\codeb\api-gateway\src\main\java\com\guide\cm\apigatway\filters\LoggingFilter.java
+E:\work\codeb\api-gateway\src\main\java\com\guide\cm\apigatway\controller\FallBackController.java
