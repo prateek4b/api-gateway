@@ -17,13 +17,13 @@ import java.util.function.Consumer;
 @Configuration
 public class RouteConfiguration {
 
-    @Bean
+    /*@Bean
     public RouteLocator gatewayRouter(RouteLocatorBuilder routeLocatorBuilder) {
         return routeLocatorBuilder.routes()
                 .route("route1",predicateSpec -> predicateSpec.path("/incorrectUrl")
-                        /*.filters(gatewayFilterSpec ->
+                        *//*.filters(gatewayFilterSpec ->
                                 gatewayFilterSpec.circuitBreaker(config -> config.setName("myCircuitBreaker")
-                                .setFallbackUri("forward:/fallback"))).uri("lb://USER-PROFILE-SERVICE"))*/
+                                .setFallbackUri("forward:/fallback"))).uri("lb://USER-PROFILE-SERVICE"))*//*
                         .filters(f -> f.circuitBreaker(c -> c.setName("myCircuitBreaker").setFallbackUri("forward:///fallback")))
                         .uri("lb://USER-PROFILE-SERVICE"))
                 .route("route2",predicateSpec -> predicateSpec.path("/sayHello")
@@ -33,7 +33,7 @@ public class RouteConfiguration {
                         .uri("lb://USER-PROFILE-SERVICE"))
                 .route("route4",predicateSpec -> predicateSpec.path("/showRequest")
                         .filters(gatewayFilterSpec -> gatewayFilterSpec.addRequestHeader("gateway","apiGateway")
-                                /*.addRequestParameter("gateway","apiGateway")*/)
+                                *//*.addRequestParameter("gateway","apiGateway")*//*)
                         .uri("lb://USER-PROFILE-SERVICE"))
                 .route("route6",predicateSpec -> predicateSpec.path("/fallback")
                 .uri("lb://API-GATEWAY"))
@@ -44,6 +44,17 @@ public class RouteConfiguration {
                         .filters(x->x.retry(retryConfig -> getRetryConfig(retryConfig)))
                         .uri("lb://USER-PROFILE-SERVICE"))
 
+                .build();
+    }*/
+
+    @Bean
+    public RouteLocator gatewayRouter(RouteLocatorBuilder routeLocatorBuilder) {
+        return routeLocatorBuilder.routes()
+                .route("client",r->r.path("/client/**").uri("lb://USER-PROFILE-SERVICE"))
+                .route("fee",r->r.path("/fee/**").uri("lb://FEE-CALCULATION-SERVICE"))
+                .route("report",r->r.path("/report/**").uri("lb://REPORT-GENERATOR"))
+                .route("route2",predicateSpec -> predicateSpec.path("/sayHello")
+                        .uri("lb://USER-PROFILE-SERVICE"))
                 .build();
     }
 
